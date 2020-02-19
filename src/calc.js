@@ -6,8 +6,8 @@ const MODIFY_NUMBERS = [
 function calcModyfyNumber(fitSpeed, bpm) {
 
   // input is only 1~65535
-  if (!(fitSpeed >= 1 && fitSpeed <= 65525 &&
-    bpm >= 1 && bpm <= 65525)) {
+  if (!(fitSpeed >= 1 && fitSpeed <= 65535 &&
+    bpm >= 1 && bpm <= 65535)) {
     throw new Error("input is only 1~65535");
   }
 

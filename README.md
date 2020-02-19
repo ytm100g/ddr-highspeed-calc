@@ -20,4 +20,4 @@ to calculate the best speed modifiers for you
 - 目標Fit Speed
   - 1~65535
 - BPM
-  - 1~65536
+  - 1~65535
