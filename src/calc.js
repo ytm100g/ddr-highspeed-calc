@@ -3,9 +3,10 @@ const MODIFY_NUMBERS = [
   3.25, 3.5, 3.75, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0
 ]; // https://p.eagate.573.jp/game/ddr/ddra20/p/howto/option_list.html
 
-function calcModyfyNumber (fitSpeed, bpm) {
+function calcModyfyNumber(fitSpeed, bpm) {
   let i = 0;
-  while (fitSpeed > bpm * MODIFY_NUMBERS[i]) {
+  while (fitSpeed > bpm * MODIFY_NUMBERS[i] &&
+    MODIFY_NUMBERS.length !== i + 1) {
     i++;
   }
   const result = {
@@ -14,10 +15,11 @@ function calcModyfyNumber (fitSpeed, bpm) {
       revisionSpeed: bpm * MODIFY_NUMBERS[i]
     }
   };
-  if (result.current.revisionSpeed != fitSpeed) {
+  if (result.current.revisionSpeed !== fitSpeed &&
+    i >= 1 && MODIFY_NUMBERS.length !== i + 1) {
     result.before = {
-      modifyNumber: MODIFY_NUMBERS[i-1],
-      revisionSpeed: bpm * MODIFY_NUMBERS[i-1]
+      modifyNumber: MODIFY_NUMBERS[i - 1],
+      revisionSpeed: bpm * MODIFY_NUMBERS[i - 1]
     };
   }
   return result;
