@@ -4,6 +4,13 @@ const MODIFY_NUMBERS = [
 ]; // https://p.eagate.573.jp/game/ddr/ddra20/p/howto/option_list.html
 
 function calcModyfyNumber(fitSpeed, bpm) {
+
+  // input is only 1~65535
+  if (!(fitSpeed >= 1 && fitSpeed <= 65525 &&
+    bpm >= 1 && bpm <= 65525)) {
+    throw new Error("input is only 1~65535");
+  }
+
   let i = 0;
   while (fitSpeed > bpm * MODIFY_NUMBERS[i] &&
     MODIFY_NUMBERS.length !== i + 1) {
