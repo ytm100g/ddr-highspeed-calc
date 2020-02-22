@@ -1,14 +1,23 @@
-const MODIFY_NUMBERS = [
-  0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25, 2.5, 2.75, 3.0,
-  3.25, 3.5, 3.75, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0
+let MODIFY_NUMBERS = [
+  1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5,
+  5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0
 ]; // https://p.eagate.573.jp/game/ddr/ddra20/p/howto/option_list.html
+const PREMIUM_MODIFY_NUMBERS = [
+  0.25, 0.5, 0.75, 1.25, 1.75, 2.25, 2.75, 3.25, 3.75
+];
 
-function calcModyfyNumber(fitSpeed, bpm) {
+function calcModyfyNumber(fitSpeed, bpm, isPremium = false) {
 
   // input is only 1~65535
   if (!(fitSpeed >= 1 && fitSpeed <= 65535 &&
     bpm >= 1 && bpm <= 65535)) {
     throw new Error("input is only 1~65535");
+  }
+
+  if (isPremium) {
+    MODIFY_NUMBERS =
+      MODIFY_NUMBERS.concat(PREMIUM_MODIFY_NUMBERS)
+    MODIFY_NUMBERS.sort();
   }
 
   let i = 0;
