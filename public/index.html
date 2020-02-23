@@ -8,25 +8,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   </head>
   <body>
-    <form>
-      <p>
-        Is Premium?: <input type="checkbox" id="isPremium" checked><br>
-      </p>
-        Your FitSpeed：<input type="number" type="text" class="inputText" id="yourFitSpeed" size="10"><br>
-      </p>
-        BPM of The Song：<input type="number" type="text" class="inputText" id="songBpm" size="10"> BPM<br>
-      </p>
-      <p>
-        <b>Current Recommend</b><br>
-        Modify Number：x <input type="text" id="currentModifyNumbey" size="5" readonly="readonly"><br>
-        Revision Speed: <input type="text" id="currentRevisionSpeed" size="10" readonly="readonly"><br>
-      </p>
-      <p>
-        <b>Before Recommend</b><br>
-        Modify Number：x <input type="text" id="beforeModifyNumbey" size="5" readonly="readonly"><br>
-        Revision Speed: <input type="text" id="beforeRevisionSpeed" size="10" readonly="readonly"><br>
-      </p>
-    </form>
+    <div class="col align-self-center">
+      <form>
+        <p>
+          Is Premium?: <input type="checkbox" id="isPremium" checked><br>
+        </p>
+          Your FitSpeed：
+          <input type="number" type="text" class="inputText" id="yourFitSpeed" size="5"><br>
+        </p>
+          BPM of The Song：
+          <input type="number" type="text" class="inputText" id="songBpm" size="5"> BPM<br>
+        </p>
+        <p>
+          <b>Current Recommend</b><br>
+          Modify Number：x <input type="text" id="currentModifyNumbey" size="5" readonly="readonly"><br>
+          Revision Speed: <input type="text" id="currentRevisionSpeed" size="5" readonly="readonly"><br>
+        </p>
+        <p>
+          <b>Before Recommend</b><br>
+          Modify Number：x <input type="text" id="beforeModifyNumbey" size="5" readonly="readonly"><br>
+          Revision Speed: <input type="text" id="beforeRevisionSpeed" size="5" readonly="readonly"><br>
+        </p>
+      </form>
+    </div>
     <script type="text/javascript">
       let isPremium, yourFitSpeed, songBpm, result;
       $('input[type="number"]').keyup("change", function() {
