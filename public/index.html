@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="ddr/js/calc.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  </head>
+  <body>
+    <form>
+      <p>
+        Is Premium?: <input type="checkbox" id="isPremium" checked><br>
+      </p>
+        Your FitSpeed：<input type="number" type="text" class="inputText" id="yourFitSpeed" size="10"><br>
+      </p>
+        BPM of The Song：<input type="number" type="text" class="inputText" id="songBpm" size="10"> BPM<br>
+      </p>
+      <p>
+        <b>Current Recommend</b><br>
+        Modify Number：x <input type="text" id="currentModifyNumbey" size="5" readonly="readonly"><br>
+        Revision Speed: <input type="text" id="currentRevisionSpeed" size="10" readonly="readonly"><br>
+      </p>
+      <p>
+        <b>Before Recommend</b><br>
+        Modify Number：x <input type="text" id="beforeModifyNumbey" size="5" readonly="readonly"><br>
+        Revision Speed: <input type="text" id="beforeRevisionSpeed" size="10" readonly="readonly"><br>
+      </p>
+    </form>
+    <script type="text/javascript">
+      let isPremium, yourFitSpeed, songBpm, result;
+      $('input[type="number"]').keyup("change", function() {
+        isPremium = $("#isPremium").prop("checked");
+        yourFitSpeed = Number($("#yourFitSpeed").val());
+        songBpm = Number($("#songBpm").val());
+        if (yourFitSpeed > 0, songBpm > 0) {
+          result = calcModyfyNumber(
+            yourFitSpeed,
+            songBpm,
+            isPremium
+          );
+          $("#currentModifyNumbey").val(
+            result.current.modifyNumber
+          );
+          $("#currentRevisionSpeed").val(
+            result.current.revisionSpeed
+          );
+          if (result.before) {
+            $("#beforeModifyNumbey").val(
+              result.before.modifyNumber
+            );
+            $("#beforeRevisionSpeed").val(
+              result.before.revisionSpeed
+            );
+          } else {
+            $("#beforeModifyNumbey").val("");
+            $("#beforeRevisionSpeed").val("");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

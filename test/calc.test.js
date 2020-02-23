@@ -1,6 +1,6 @@
 const mocha = require("mocha");
 const expect = require("chai").expect;
-const calc = require("../src/calc"); // Test Target
+const calc = require("../public/js/calc"); // Test Target
 
 describe("1. calcModyfyNumber unit tests (isPremium = false)", function () {
   it("fitspeedぴったりの倍率がある場合current属性のみを返却する", function () {
