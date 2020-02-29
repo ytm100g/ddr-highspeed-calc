@@ -36,7 +36,7 @@
           </div>
           <br>
         </p>
-          BPM of The Song：
+          Song BPM：
           <input type="number" class="inputText" id="songBpm"> BPM<br>
         </p>
         <p>
@@ -81,7 +81,10 @@
         isPremium = $("#isPremium").prop("checked");
         yourFitSpeed = Number($("#yourFitSpeed").val());
         songBpm = Number($("#songBpm").val());
-        if (yourFitSpeed > 0, songBpm > 0) {
+        if (
+          yourFitSpeed > 0 && songBpm > 0 &&
+          yourFitSpeed < 65536 && songBpm < 65536
+        ) {
           result = calcModyfyNumber(
             yourFitSpeed,
             songBpm,
