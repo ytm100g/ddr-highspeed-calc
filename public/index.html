@@ -1,117 +1,148 @@
 <html>
-  <head>
-    <title>DDR Speed Calculator - ytm100g.com</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="ddr/js/calc.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <style type="text/css">
-      .inputText {
-        width: 5em;
-      }
-      #msgBox{
-        display: none;
-        opacity: 0.8;
-        backGround-color: lightblue;
-        position: fixed;
-        top: 5;
-        right: 5;
-        font-size: 5vw;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="col align-self-center">
-        <p>
-          Is Premium?: <input type="checkbox" id="isPremium" checked><br>
-        </p>
-          Your FitSpeed：
-          <input type="number" class="inputText" id="yourFitSpeed" autofocus=true>
-          <button type="button" name="save" value="save" id="save">Save</button>
-          <div id="msgBox">
-            successfully saved.
+
+<head>
+  <title>DDR Speed Calculator - ytm100g.com</title>
+  <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="ddr/js/calc.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <style type="text/css">
+    .inputText {
+      width: 5em;
+    }
+
+    #msgBox {
+      display: none;
+      opacity: 0.8;
+      backGround-color: lightblue;
+      position: fixed;
+      top: 5;
+      right: 5;
+      font-size: 5vw;
+      z-index: 9999;
+    }
+
+    #pageForm {
+      position: "absolute";
+      z-index: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="msgBox">
+    successfully saved.
+  </div>
+  <form data-inline="true" id="pageForm">
+    <div class="ui-field-contain">
+      <div>
+        <label for="isPremium">Is Premium?</label>
+        <input type="checkbox" name="yes" id="isPremium" value="yes" checked>
+      </div>
+      <div>
+        <label for="yourFitSpeed">Your FitSpeed：</label>
+        <fieldset>
+          <div style="float: left;">
+            <input type="number" class="inputText" id="yourFitSpeed" autofocus=true data-inline="true">
           </div>
-          <br>
-        </p>
-          Song BPM：
-          <input type="number" class="inputText" id="songBpm"> BPM<br>
-        </p>
+          <button type="button" name="save" value="save" id="save"
+            class="ui-btn ui-btn-inline ui-corner-all ui-mini">Save</button>
+        </fieldset>
+      </div>
+      <div>
+        <label for="songBpm">Song BPM：</label>
+        <input type="number" class="inputText" id="songBpm">
+      </div>
+      <div>
         <p>
-          <b>Current Recommend</b><br>
-          Modify Number：x <input type="text" id="currentModifyNumbey" size="5" readonly="readonly"><br>
-          Revision Speed : <input type="text" id="currentRevisionSpeed" size="5" readonly="readonly"><br>
+          <b>Current Recommend</b>
         </p>
+        <label for="currentModifyNumbey">Modify Number：x</label>
+        <input type="text" id="currentModifyNumbey" size="5" readonly="readonly">
+        <label for="currentRevisionSpeed">Revision Speed :</label>
+        <input type="text" id="currentRevisionSpeed" size="5" readonly="readonly">
+      </div>
+      <div>
         <p>
-          <b>Before Recommend</b><br>
-          Modify Number：x <input type="text" id="beforeModifyNumbey" size="5" readonly="readonly"><br>
-          Revision Speed : <input type="text" id="beforeRevisionSpeed" size="5" readonly="readonly"><br>
+          <b>Before Recommend</b>
         </p>
-      </form>
+        <label for="beforeModifyNumbey">Modify Number：x</label>
+        <input type="text" id="beforeModifyNumbey" size="5" readonly="readonly">
+        <label for="beforeRevisionSpeed">Revision Speed :</label>
+        <input type="text" id="beforeRevisionSpeed" size="5" readonly="readonly">
+      </div>
     </div>
-    <script type="text/javascript">
-      // CookieからFitSpeedを取得するロジック
-      $(function() {
-        let cookie_fitSpeed = $.cookie("fitSpeed");
-        if (cookie_fitSpeed) {
-          $("#yourFitSpeed").val(cookie_fitSpeed);
-          $("#songBpm").focus();
-        }
-      });
-      // CookieにFitSpeedの値を保持するロジック
-      $("#save").on("click", function() {
-        if ($("#yourFitSpeed").val() === "") {
-          $.removeCookie("fitSpeed", {path: "/", domain: "ytm100g.com"});
+  </form>
+  <script type="text/javascript">
+    // CookieからFitSpeedを取得するロジック
+    $(function () {
+      let cookie_fitSpeed = $.cookie("fitSpeed");
+      if (cookie_fitSpeed) {
+        $("#yourFitSpeed").val(cookie_fitSpeed);
+        $("#songBpm").focus();
+      }
+    });
+    // CookieにFitSpeedの値を保持するロジック
+    $("#save").on("click", function () {
+      if ($("#yourFitSpeed").val() === "") {
+        $.removeCookie("fitSpeed", { path: "/", domain: "ytm100g.com" });
+      } else {
+        $.cookie(
+          "fitSpeed",
+          $("#yourFitSpeed").val(),
+          { expires: 30, path: "/", domain: "ytm100g.com", secure: true }
+        );
+        $("#msgBox").fadeIn("slow", function () {
+          $(this).delay(2000).fadeOut("slow");
+        });
+      }
+    });
+    // 計算結果を出力するロジック
+    let isPremium, yourFitSpeed, songBpm, result;
+    $('input[type="number"]').keyup("change", function () {
+      isPremium = $("#isPremium").prop("checked");
+      yourFitSpeed = Number($("#yourFitSpeed").val());
+      songBpm = Number($("#songBpm").val());
+      if (
+        yourFitSpeed > 0 && songBpm > 0 &&
+        yourFitSpeed < 65536 && songBpm < 65536
+      ) {
+        result = calcModyfyNumber(
+          yourFitSpeed,
+          songBpm,
+          isPremium
+        );
+        $("#currentModifyNumbey").val(
+          result.current.modifyNumber
+        );
+        $("#currentRevisionSpeed").val(
+          result.current.revisionSpeed
+        );
+        if (result.before) {
+          $("#beforeModifyNumbey").val(
+            result.before.modifyNumber
+          );
+          $("#beforeRevisionSpeed").val(
+            result.before.revisionSpeed
+          );
         } else {
-          $.cookie(
-            "fitSpeed",
-            $("#yourFitSpeed").val(),
-            {expires: 30, path: "/", domain: "ytm100g.com", secure: true}
-          );
-          $("#msgBox").fadeIn("slow", function () {
-            $(this).delay(2000).fadeOut("slow");
-          });
+          $("#beforeModifyNumbey").val("");
+          $("#beforeRevisionSpeed").val("");
         }
-      });
-      // 計算結果を出力するロジック
-      let isPremium, yourFitSpeed, songBpm, result;
-      $('input[type="number"]').keyup("change", function() {
-        isPremium = $("#isPremium").prop("checked");
-        yourFitSpeed = Number($("#yourFitSpeed").val());
-        songBpm = Number($("#songBpm").val());
-        if (
-          yourFitSpeed > 0 && songBpm > 0 &&
-          yourFitSpeed < 65536 && songBpm < 65536
-        ) {
-          result = calcModyfyNumber(
-            yourFitSpeed,
-            songBpm,
-            isPremium
-          );
-          $("#currentModifyNumbey").val(
-            result.current.modifyNumber
-          );
-          $("#currentRevisionSpeed").val(
-            result.current.revisionSpeed
-          );
-          if (result.before) {
-            $("#beforeModifyNumbey").val(
-              result.before.modifyNumber
-            );
-            $("#beforeRevisionSpeed").val(
-              result.before.revisionSpeed
-            );
-          } else {
-            $("#beforeModifyNumbey").val("");
-            $("#beforeRevisionSpeed").val("");
-          }
-        }
-      });
-    </script>
-    <p>
-      Contact : <a href="https://twitter.com/5_t_k" target="_blank">@5_t_k</a>
-    </p>
-  </body>
+      }
+    });
+  </script>
+  <p>
+    Contact : <a href="https://twitter.com/5_t_k" target="_blank">@5_t_k</a>
+  </p>
+</body>
+
 </html>
